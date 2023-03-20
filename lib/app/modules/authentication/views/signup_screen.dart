@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok/app/modules/authentication/controllers/signup_controller.dart';
 import 'package:tiktok/app/routes/app_routes.dart';
@@ -9,12 +12,11 @@ import 'package:tiktok/app/utilities/colors/app_colors.dart';
 import 'package:tiktok/app/utilities/size/size_fit.dart';
 import 'package:tiktok/app/utilities/text_field/tik_textfield.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends GetView<SignUpController> {
   const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = SignUpController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -57,7 +59,8 @@ class SignUpView extends StatelessWidget {
                       bottom: -10,
                       child: IconButton(
                           onPressed: () {
-                            debugPrint('pick an image');
+                            // controller.pickImage();
+                            controller.pickHeroImage();
                           },
                           icon: Icon(Icons.add_a_photo)))
                 ],
@@ -110,7 +113,13 @@ class SignUpView extends StatelessWidget {
               ),
               AuthButton(
                 text: 'Register',
-                onPressed: () {},
+                onPressed: () {
+                  controller.registerUser(
+                      controller.usernameEditingController.value.text,
+                      controller.emailEditingController.value.text,
+                      controller.passwordEditingController.value.text,
+                      controller.profilePhoto);
+                },
               ),
               SizedBox(
                 height: sizeFit(false, 24, context),
