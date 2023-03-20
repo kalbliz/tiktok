@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/app/modules/authentication/controllers/signup_controller.dart';
 import 'package:tiktok/app/routes/app_pages.dart';
+import 'package:tiktok/app/services/firebase_services/firebase_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) {
-    Get.put(SignUpController());
+    Get.put(FirebaseService());
   });
   runApp(MyApp());
 }
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppPages.routes,
+    return GetMaterialApp(
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
       title: 'TikTok Clone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.grey),

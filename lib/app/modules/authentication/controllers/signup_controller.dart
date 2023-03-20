@@ -10,12 +10,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tiktok/app/models/user/user_model.dart' as model;
 import 'package:tiktok/app/services/firebase_services/firebase_services.dart';
 import 'package:tiktok/app/utilities/dialogue/general_dialogue.dart';
+import 'package:tiktok/app/utilities/enums/enums.dart';
 
 class SignUpController extends GetxController {
+  final thisViewState = ViewState.idle.obs;
   final usernameEditingController = TextEditingController();
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
-  final FirebaseService firebaseService = FirebaseService();
+  final FirebaseService firebaseService = Get.find<FirebaseService>();
   final Rx<File> _pickedimage = File('').obs;
   final Rx<File> file = File('').obs;
   File? get profilePhoto => _pickedimage.value;
@@ -72,6 +74,7 @@ class SignUpController extends GetxController {
 
   Future registerUser(
       String username, String email, String password, File? image) async {
+    thisViewState.value = ViewState.busy;
     try {
       if (username.isNotEmpty && password.isNotEmpty && image != null) {
         UserCredential credentials = await firebaseService.firebaseAuth
@@ -98,5 +101,6 @@ class SignUpController extends GetxController {
         e.toString(),
       );
     }
+    thisViewState.value = ViewState.idle;
   }
 }

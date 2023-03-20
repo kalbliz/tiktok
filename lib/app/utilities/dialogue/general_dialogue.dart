@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:tiktok/app/utilities/colors/app_colors.dart';
 import 'package:tiktok/app/utilities/size/size_fit.dart';
@@ -22,7 +21,9 @@ class GeneralDialog {
     );
   }
 
-  Future<dynamic> errorMessage(String message, ) async {
+  Future<dynamic> errorMessage(
+    String message,
+  ) async {
     return showDialog(
       context: Get.context!,
       builder: (BuildContext context) => AlertDialog(
@@ -51,7 +52,7 @@ class GeneralDialog {
         actions: <Widget>[
           InkWell(
             onTap: () {
-              context.pop();
+              Get.back();
             },
             child: Container(
               padding: EdgeInsets.symmetric(
