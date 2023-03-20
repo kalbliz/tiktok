@@ -7,7 +7,7 @@ class AppPages {
   AppPages._();
 
   static final GoRouter routes =
-      GoRouter(initialLocation: Paths.LOGIN, routes: [
+      GoRouter(initialLocation: Paths.SIGNUP, routes: [
     GoRoute(
       name: Paths.LOGIN,
       path: '/login',
