@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -61,6 +63,8 @@ showOptionsDialog(BuildContext context) {
 pickVideo(ImageSource source, BuildContext context) async {
   final video = await ImagePicker().pickVideo(source: source);
   if (video != null) {
-    Get.toNamed(AppRoutes.CONFIRM_SCREEN);
+    Get.toNamed(AppRoutes.CONFIRM_SCREEN, arguments: [
+      {"videoFile": File(video.path), "videoPath": video.path}
+    ]);
   }
 }
