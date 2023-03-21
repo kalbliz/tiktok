@@ -10,52 +10,10 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Scaffold(
-        backgroundColor: AppColors.AppBlack,
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              controller.indexValue.value = index;
-            },
-            currentIndex: controller.indexValue.value,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.grey[800],
-            selectedItemColor: AppColors.AppWhite,
-            unselectedItemColor: AppColors.AppBlack,
-            items: [
-              BottomNavigationBarItem(
-                  label: 'Home',
-                  icon: Icon(
-                    Icons.home,
-                    size: sizeFit(false, 30, context),
-                  )),
-              BottomNavigationBarItem(
-                  label: 'Search',
-                  icon: Icon(
-                    Icons.search,
-                    size: sizeFit(false, 30, context),
-                  )),
-              BottomNavigationBarItem(label: '', icon: CustomIcon()),
-              BottomNavigationBarItem(
-                  label: 'Message',
-                  icon: Icon(
-                    Icons.message,
-                    size: sizeFit(false, 30, context),
-                  )),
-              BottomNavigationBarItem(
-                  label: 'Profile',
-                  icon: Icon(
-                    Icons.person,
-                    size: sizeFit(false, 30, context),
-                  )),
-            ]),
-        body: Center(
-          child: Text(
-            'HomeView is working',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-      );
-    });
+    return Scaffold(
+      body: Center(
+        child: Text('Home View'),
+      ),
+    );
   }
 }

@@ -23,7 +23,7 @@ class FirebaseService extends GetxService {
     if (user == null) {
       Get.offAllNamed(AppRoutes.LOGIN);
     } else {
-      Get.offAllNamed(AppRoutes.HOME);
+      Get.offAllNamed(AppRoutes.NAV);
     }
   }
 }
