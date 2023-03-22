@@ -11,6 +11,12 @@ import 'package:tiktok/app/modules/home/bindings/home_binding.dart';
 import 'package:tiktok/app/modules/home/views/home_view.dart';
 import 'package:tiktok/app/modules/nav/bindings/nav_binding.dart';
 import 'package:tiktok/app/modules/nav/views/nav_view.dart';
+import 'package:tiktok/app/modules/profile/bindings/profile_binding.dart';
+import 'package:tiktok/app/modules/profile/views/profile_view.dart';
+import 'package:tiktok/app/modules/search/bindings/search_binding.dart';
+import 'package:tiktok/app/modules/search/views/search_view.dart';
+import 'package:tiktok/app/modules/message/bindings/video_screens_binding.dart';
+import 'package:tiktok/app/modules/message/views/video_screens_view.dart';
 import 'package:tiktok/app/routes/app_routes.dart';
 
 class AppPages {
@@ -46,6 +52,21 @@ class AppPages {
       name: AppPaths.CONFIRM_SCREEN,
       page: () => ConfirmScreenView(),
       binding: ConfirmScreenBinding(),
+    ),
+    GetPage(
+      name: AppPaths.MESSAGES,
+      page: () => MessagesView(),
+      binding: MessagesBinding(),
+    ),
+    GetPage(
+      name: AppPaths.SEARCH,
+      page: () => SearchView(),
+      binding: SearchBinding(),
+    ),
+    GetPage(
+      name: AppPaths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }
