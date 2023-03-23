@@ -110,11 +110,26 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 height: sizeFit(false, 12, context),
                               ),
-                              Icon(
-                                CupertinoIcons.heart_fill,
-                                color: AppColors.AppWhite,
-                                size: sizeFit(false, 30, context),
-                              ),
+                              InkWell(
+                                  onTap: () {
+                                    controller.videoServices.likeVideo(
+                                        controller
+                                            .videoServices.videoList[index].id);
+                                  },
+                                  child: controller
+                                          .videoServices.videoList[index].likes
+                                          .contains(controller.videoServices
+                                              .videoList[index].uid)
+                                      ? Icon(
+                                          CupertinoIcons.heart_fill,
+                                          color: AppColors.AppRed,
+                                          size: sizeFit(false, 30, context),
+                                        )
+                                      : Icon(
+                                          CupertinoIcons.heart,
+                                          color: AppColors.AppWhite,
+                                          size: sizeFit(false, 30, context),
+                                        )),
                               SizedBox(
                                 height: sizeFit(false, 4, context),
                               ),

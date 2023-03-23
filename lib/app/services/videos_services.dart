@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/app/models/videos/video_model.dart';
 import 'package:tiktok/app/services/firebase_services/firebase_services.dart';
@@ -23,5 +24,22 @@ class VideoServices extends GetxService {
         },
       ),
     );
+  }
+
+  likeVideo(String id) async {
+    DocumentSnapshot documentSnapshot =
+        await firebaseServices.firebaseStore.collection('videos').doc(id).get();
+
+    var uid = firebaseServices.user.uid;
+
+    if ((documentSnapshot.data()! as dynamic)['likes'].contains(uid)) {
+      await firebaseServices.firebaseStore.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayRemove([uid])
+      });
+    } else {
+      await firebaseServices.firebaseStore.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayUnion([uid])
+      });
+    }
   }
 }

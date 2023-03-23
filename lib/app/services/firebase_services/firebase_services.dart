@@ -9,6 +9,7 @@ class FirebaseService extends GetxService {
   final firebaseStorage = FirebaseStorage.instance;
   final firebaseStore = FirebaseFirestore.instance;
   late Rx<User?> _user;
+   User get user => _user.value!;
 
   @override
   void onReady() {
